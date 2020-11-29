@@ -343,6 +343,14 @@ def training_log(loss_dict, total_loss_dict, learning_rate, iteration,
     add_to_logging('backward-clip-grad')
     add_to_logging('optimizer')
     add_to_logging('batch generator')
+    add_to_logging('_reduce inside')
+    add_to_logging('_gather inside')
+    add_to_logging('CopyToModelParallelRegion BACKWARD _reduce')
+    add_to_logging('ReduceFromModelParallelRegion SYMBOLIC _reduce')
+    add_to_logging('ReduceFromModelParallelRegion FORWARD _reduce')
+    add_to_logging('ScatterToModelParallelRegion BACKWARD _gather')
+    add_to_logging('GatherFromModelParallelRegion SYMBOLIC _gather')
+    add_to_logging('GatherFromModelParallelRegion FORWARD _gather')
 
     # Tensorboard values.
     if writer and torch.distributed.get_rank() == 0:
